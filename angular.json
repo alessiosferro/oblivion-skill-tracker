@@ -117,8 +117,13 @@
               "devServerTarget": "oblivion-skill-tracker:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "oblivion-skill-tracker"
 }

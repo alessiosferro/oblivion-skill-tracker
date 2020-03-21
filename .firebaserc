@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "oblivion-skill-tracker": {
+      "hosting": {
+        "oblivion-skill-tracker": [
+          "oblivion-skill-tracker"
+        ]
+      }
+    }
+  }
+}

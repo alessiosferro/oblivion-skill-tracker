@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "oblivion-skill-tracker",
+      "public": "dist/oblivion-skill-tracker",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
