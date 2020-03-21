@@ -1,7 +1,10 @@
-import { Skills } from './skill.model';
+import { Skill } from './skill.model';
 
 export interface Character {
+  id: string;
   name: string;
   level: number;
-  skills: Skills;
+  major: Skill[];
+  minor: Skill[];
+  gender: "male" | "female";
 }
