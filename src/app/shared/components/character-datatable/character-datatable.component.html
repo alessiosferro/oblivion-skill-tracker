@@ -17,7 +17,7 @@
                 </button>
                 <button
                     type="button"
-                    (click)="onCharacterRemove({
+                    (click)="displayConfirmTemplate({
                         container: ConfirmContainer.vcRef,
                         template: ConfirmTemplate
                     })"
@@ -34,7 +34,7 @@
                     <div>Are you sure?</div>
                     <button
                         type="button"
-                        (click)="onConfirmRemove({
+                        (click)="removeCharacter({
                             characterId: character.id,
                             isConfirmed: true,
                             container: ConfirmContainer.vcRef
@@ -44,7 +44,7 @@
                     </button>
                     <button
                         type="button"
-                        (click)="onConfirmRemove({
+                        (click)="removeCharacter({
                             characterId: character.id,
                             datatableIndex: i,
                             container: ConfirmContainer.vcRef

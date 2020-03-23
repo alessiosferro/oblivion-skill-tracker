@@ -6,20 +6,21 @@
 </button>
 
 <app-create-character
+    *ngIf="isFormDisplayed"
     [races$]="races$"
     [skills$]="skills$"
     (createCharacter)="onCreateCharacter($event)"
     (cancel)="isFormDisplayed = false"
-    *ngIf="isFormDisplayed"
 ></app-create-character>
 
 <app-character-datatable
     [characters$]="characters$"
-    (remove)="onRemove($event)"
->
-</app-character-datatable>
+    (remove)="Character.removeCharacter($event);"
+    (displayDetail)="character$.next($event)"
+></app-character-datatable>
 
 <app-character
-    *ngIf="isCharacterDisplayed"
-    [character]="character$ | async"
+    *ngIf="character$ | async as character"
+    [character]="character"
+    (exit)="character$.next(null)"
 ></app-character>

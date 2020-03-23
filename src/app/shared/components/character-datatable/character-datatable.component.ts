@@ -31,7 +31,7 @@ export class CharacterDatatableComponent {
   @Output()
   remove = new EventEmitter<number>();
 
-  public onConfirmRemove({
+  public removeCharacter({
     characterId,
     isConfirmed,
     container
@@ -43,7 +43,7 @@ export class CharacterDatatableComponent {
     container.clear();
   }
 
-  public onCharacterRemove({
+  public displayConfirmTemplate({
     container,
     template
   }: ContainerTemplate) {

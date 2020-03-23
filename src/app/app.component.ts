@@ -13,7 +13,6 @@ import { Character } from './core/model/character.model';
 })
 export class AppComponent implements OnInit {
   public isFormDisplayed = false;
-  public isCharacterDisplayed = false;
 
   public characters$: Observable<Character[]>
   public skills$: Observable<Skill[]>
@@ -35,15 +34,7 @@ export class AppComponent implements OnInit {
 
   onCreateCharacter(character: Character) {
     this.Character.storeCharacter(character);
+
     this.isFormDisplayed = false;
-  }
-
-  onDisplayDetail(character: Character) {
-    this.isCharacterDisplayed = true;
-    this.character$.next(character);
-  }
-
-  onRemove(characterId: string) {
-    this.Character.removeCharacter(characterId);
   }
 }
