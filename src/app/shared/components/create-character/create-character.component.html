@@ -1,0 +1,79 @@
+<form
+    #form="ngForm"
+    (ngSubmit)="createCharacter.emit(form.value)"
+>
+    <div>
+        <label for="name">Name</label>
+        <input
+            id="name"
+            type="text"
+            ngModel
+            name="name"
+        >
+    </div>
+
+    <div>
+        <label for="level">Level</label>
+        <input
+            id="level"
+            type="text"
+            ngModel
+            name="level"
+        >
+    </div>
+
+    <div>
+        <label for="race">Race</label>
+        <select
+            id="race"
+            ngModel
+            name="race"
+        >
+            <option value>Choose...</option>
+            <option
+                [value]="race"
+                *ngFor="let race of races$ | async"
+            >
+                {{ race | titlecase }}
+            </option>
+        </select>
+    </div>
+
+    <div>
+        <label for="gender">Gender</label>
+        <select
+            id="gender"
+            ngModel="male"
+            name="gender"
+        >
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="major">Major Skills</label>
+        <select
+            id="major"
+            ngModel
+            name="major"
+            multiple
+        >
+            <option value>Choose...</option>
+            <option
+                [value]="skill"
+                *ngFor="let skill of skills$ | async"
+            >
+                {{ skill.name | titlecase }}
+            </option>
+        </select>
+    </div>
+
+    <button
+        type="button"
+        (click)="cancel.emit()"
+    >
+        Cancel
+    </button>
+    <button type="submit">Submit</button>
+</form>

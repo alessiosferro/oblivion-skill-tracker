@@ -1,7 +1,7 @@
-import { Skills, Skill } from './../model/skill.model';
+import { Skills, Skill } from '../model/skill.model';
 import { SeederService } from './seeder.service';
-import { Races } from './../model/races.model';
-import { PlayerStatic } from './../model/player-static.model';
+import { Races } from '../model/races.model';
+import { PlayerStatic } from '../model/player-static.model';
 import { Observable } from 'rxjs';
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from '@angular/fire/firestore';

@@ -1,11 +1,10 @@
-import { tap } from 'rxjs/operators';
-import { Races } from './model/races.model';
-import { CharacterService } from './services/character.service';
-import { StaticDataService } from './services/static-data.service';
+import { Races } from './core/model/races.model';
+import { CharacterService } from './core/services/character.service';
+import { StaticDataService } from './core/services/static-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { Skill } from './model/skill.model';
-import { Character } from './model/character.model';
+import { Skill } from './core/model/skill.model';
+import { Character } from './core/model/character.model';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +14,6 @@ import { Character } from './model/character.model';
 export class AppComponent implements OnInit {
   public isFormDisplayed = false;
   public isCharacterDisplayed = false;
-  public isRemoveConfirmDisplayed: boolean[] = [];
-  private characterId: string;
 
   public characters$: Observable<Character[]>
   public skills$: Observable<Skill[]>
@@ -32,18 +29,11 @@ export class AppComponent implements OnInit {
     this.skills$ = this.StaticData.getAllSkills$();
     this.races$ = this.StaticData.getRaces$();
 
-    this.characters$ = this.Character
-      .getCharacters$()
-      .pipe(
-        tap(characters => characters.forEach(() => {
-          this.isRemoveConfirmDisplayed.push(false)
-        }))
-      )
-
+    this.characters$ = this.Character.getCharacters$()
     this.character$ = new BehaviorSubject<Character>(null);
   }
 
-  onFormSubmit(character: Character) {
+  onCreateCharacter(character: Character) {
     this.Character.storeCharacter(character);
     this.isFormDisplayed = false;
   }
@@ -53,17 +43,7 @@ export class AppComponent implements OnInit {
     this.character$.next(character);
   }
 
-  onCharacterRemove(index: number, characterId: string) {
-    this.characterId = characterId;
-    this.isRemoveConfirmDisplayed[index] = true;
-  }
-
-  onRemoveConfirm(index, confirm: boolean) {
-    if (confirm) {
-      this.Character.removeCharacter(this.characterId);
-    }
-
-    this.characterId = null;
-    this.isRemoveConfirmDisplayed[index] = false;
+  onRemove(characterId: string) {
+    this.Character.removeCharacter(characterId);
   }
 }

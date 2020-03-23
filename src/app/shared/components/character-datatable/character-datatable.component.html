@@ -1,0 +1,59 @@
+<table>
+    <tbody>
+        <tr>
+            <th>Character Name</th>
+            <th>Level</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let character of characters$ | async; let i = index">
+            <td>{{ character.name }}</td>
+            <td>{{ character.level }}</td>
+            <td>
+                <button
+                    type="button"
+                    (click)="displayDetail.emit(character)"
+                >
+                    Detail
+                </button>
+                <button
+                    type="button"
+                    (click)="onCharacterRemove({
+                        container: ConfirmContainer.vcRef,
+                        template: ConfirmTemplate
+                    })"
+                >
+                    Remove
+                </button>
+
+                <ng-container
+                    view-container
+                    #ConfirmContainer="view-container"
+                ></ng-container>
+
+                <ng-template #ConfirmTemplate>
+                    <div>Are you sure?</div>
+                    <button
+                        type="button"
+                        (click)="onConfirmRemove({
+                            characterId: character.id,
+                            isConfirmed: true,
+                            container: ConfirmContainer.vcRef
+                        })"
+                    >
+                        Yes
+                    </button>
+                    <button
+                        type="button"
+                        (click)="onConfirmRemove({
+                            characterId: character.id,
+                            datatableIndex: i,
+                            container: ConfirmContainer.vcRef
+                        })"
+                    >
+                        No
+                    </button>
+                </ng-template>
+            </td>
+        </tr>
+    </tbody>
+</table>

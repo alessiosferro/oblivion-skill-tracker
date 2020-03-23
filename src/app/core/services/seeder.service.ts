@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from '@angular/fire/firestore';
-import getCombatSkills from '../utils/get-combat-skills';
-import getMagicSkills from '../utils/get-magic-skills';
-import getStealthSkills from '../utils/get-stealth-skills';
-import getRaces from '../utils/get-races';
-import getAttributes from '../utils/get-attributes';
+import getCombatSkills from '../../shared/utils/get-combat-skills';
+import getMagicSkills from '../../shared/utils/get-magic-skills';
+import getStealthSkills from '../../shared/utils/get-stealth-skills';
+import getRaces from '../../shared/utils/get-races';
+import getAttributes from '../../shared/utils/get-attributes';
 
 @Injectable({
   providedIn: 'root'
